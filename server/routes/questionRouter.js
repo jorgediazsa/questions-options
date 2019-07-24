@@ -15,14 +15,13 @@ questionRouter
     })
     .post((req, res) => {
       Question.create(req.body, (err, question) => {
+        console.log(question)
         if (err) throw err
         console.log('Question created!')
         var id = question._id
 
-        res.writeHead(200, {
-            'Content-Type': 'text/plain'
-        });
-        res.end('Added the question with id: ' + id)
+        res.json(question)
+        res.end()
       })
     })
 
