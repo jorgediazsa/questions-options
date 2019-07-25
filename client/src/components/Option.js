@@ -4,11 +4,13 @@ import { Form, Row, Col, Alert } from 'react-bootstrap'
 export default function Option(props) {
   const { option: { answer, correct }, index, handleAnswerChange, handleCorrectAnswer, handleDeleteOption } = props
 
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
   return (
     <>
       <Row>
         <Col xs={4}>
-          OPTION A
+          OPTION {letters[index]}
           {correct && (
             <span>(CURRENT ANSWER)</span>
           )}
