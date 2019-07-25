@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Col, Form, Button } from 'react-bootstrap'
 
+import Options from './Options'
+
 class QuestionForm extends Component {
   constructor(props) {
     super(props)
@@ -19,8 +21,56 @@ class QuestionForm extends Component {
       })
     }
   }
-  
 
+  handleAnswerChange = (event, index) => {
+    const { options } = this.state
+
+    options[index].answer = event.target.value
+
+    this.setState({
+      ...this.state,
+      options
+    })
+  }
+  handleCorrectAnswer = index => {
+    let { options } = this.state
+
+    options = options.map(option => ({
+      answer: option.answer,
+      correct: false
+    }))
+
+    options[index].correct = true
+
+    this.setState({
+      ...this.state,
+      options
+    })
+  }
+  handleDeleteOption = index => {
+    const { options } = this.state
+
+    options.splice(index, 1)
+
+    this.setState({
+      ...this.state,
+      options
+    })
+  }
+  handleAddOption = () => {
+    const newOption = {
+      answer: '',
+      correct: false
+    }
+
+    const options = this.state.options
+    options.push(newOption)
+
+    this.setState({
+      ...this.state,
+      options
+    })
+  }
   handleTitleChange = event => this.setState({ title: event.target.value })
   handleQuestionChange = event => this.setState({ question: event.target.value })
   handleDelete = () => this.props.handleDelete(this.state._id)
@@ -38,7 +88,7 @@ class QuestionForm extends Component {
   }
 
   render() {
-    const { title, question } = this.state
+    const { title, question, options } = this.state
 
     return (
       <Col>
@@ -50,6 +100,13 @@ class QuestionForm extends Component {
             <Form.Label>QUESTION</Form.Label>
             <Form.Control as="textarea" rows="3" onChange={event => this.handleQuestionChange(event)} value={question} />
           </Form.Group>
+          <Options
+            options={options}
+            handleAnswerChange={this.handleAnswerChange}
+            handleCorrectAnswer={this.handleCorrectAnswer}
+            handleDeleteOption={this.handleDeleteOption}
+            handleAddOption={this.handleAddOption}
+          />
           <Button variant="primary" onClick={() => this.handleSubmit()}>
             Save
           </Button>
