@@ -1,0 +1,65 @@
+.question-form {
+  padding-left: 20px;
+  padding-top: 15px;
+}
+.question-form h3 {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 29px;
+  color: #4E4E4E;
+}
+
+.question-form label {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: uppercase;
+  color: #4E4E4E;
+  margin-top: 15px;
+}
+
+.question-form input {
+  border: 1px solid #B4B4B4;
+  box-sizing: border-box;
+  border-radius: 3px;
+  color: #555555;
+}
+
+.question-form .btn-save {
+  background: #17C37B;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 24.5px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  border-color: #17C37B;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.question-form .btn-delete {
+  background: #EF303B;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 24.5px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #FFFFFF;
+  border-color: #EF303B;
+  margin-left: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

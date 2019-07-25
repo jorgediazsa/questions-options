@@ -92,7 +92,7 @@ class QuestionForm extends Component {
     const { title, question, options } = this.state
 
     return (
-      <Col>
+      <Col className="question-form">
         <h3>{this.props.currentQuestion ? `Edit`: `Add`} Question</h3>
         <Form>
           <Form.Group>
@@ -108,11 +108,11 @@ class QuestionForm extends Component {
             handleDeleteOption={this.handleDeleteOption}
             handleAddOption={this.handleAddOption}
           />
-          <Button variant="primary" onClick={() => this.handleSubmit()}>
+          <Button className="btn-save" variant="primary" onClick={() => this.handleSubmit()}>
             Save
           </Button>
           {this.props.currentQuestion && (
-            <Button variant="danger" onClick={() => this.handleDelete()}>
+            <Button className="btn-delete" variant="danger" onClick={() => this.handleDelete()}>
               Delete
             </Button>
           )}
