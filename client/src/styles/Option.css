@@ -1,0 +1,23 @@
+.option-buttons {
+  margin-top: 15px;
+}
+
+.option-buttons span {
+  color: #32B67A;
+}
+
+.option-buttons .correct-answer {
+  color: #32B67A;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.option-buttons .delete-answer {
+  color: #EF303B;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.option-input {
+  margin-bottom: 15px;
+}

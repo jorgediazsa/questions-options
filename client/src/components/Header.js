@@ -11,11 +11,11 @@ class Header extends Component {
   render() {
     return (
       <Row className="header">
-        <Col xs={3} className="logo">
+        <Col lg={4} md={6} className="logo d-none d-md-block">
           <img src={logo} alt="Problem manager" />
           Problem manager
         </Col>
-        <Col xs={{ span: 3, offset: 6 }} className="add-question">
+        <Col lg={{ span: 4, offset: 4 }} md={6} className="add-question">
           <Link to="/"><FontAwesomeIcon icon={faPlus} /> Add Question</Link>
         </Col>
       </Row>

@@ -1,5 +1,5 @@
 .header {
-  height: 60px;
+  height: 70px;
   border-bottom: 1px solid #E5E5E5;
 }
 .logo {
@@ -8,7 +8,7 @@
   font-weight: bold;
   font-size: 21px;
   line-height: 25px;
-  padding: 20px;
+  padding: 22px;
 }
 
 .logo img {
