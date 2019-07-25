@@ -6,6 +6,7 @@ import './App.css'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import QuestionForm from './QuestionForm'
+import Message from './Message'
 
 import request from '../utils/request'
 
@@ -15,36 +16,41 @@ class App extends React.Component {
     this.state = {
       questions: null,
       currentQuestion: null,
-      loading: true
+      loading: true,
+      message: null
     }
   }
 
   handleSubmit = (id, question) => {
     if (id) {
+      
       request(id, question, 'put')
-        .then(data => this.getData())
+        .then(data => this.getData('The question was edited successfully.'))
     } else {
       request(id, question, 'post')
-        .then(data => this.getData())
+        .then(data => this.getData('The question was created successfully.'))
     }
   }
 
   handleDelete = (id) => 
     request(id, null, 'delete')
-      .then(data => this.getData())
+      .then(data => this.getData('The question was deleted successfully.'))
+  
+  handleCloseMessage = () => this.setState({ message: '' })
   
 
   componentDidMount() {
     this.getData()
   }
 
-  getData = () => {
+  getData = (message = '') => {
     request()
       .then(data => {
         this.setState({
           ...this.state,
           loading: false,
-          questions: data.data
+          questions: data.data,
+          message
         })
       })
   }
@@ -66,7 +72,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loading } = this.state
+    const { loading, message } = this.state
     return (
       <BrowserRouter>
         <Container>
@@ -79,6 +85,7 @@ class App extends React.Component {
             )}
             {!loading && (
               <>
+                <Message handleCloseMessage={this.handleCloseMessage} message={message} />
                 <Route path="/:id" render={props => this.renderContainer(props)} />
                 <Route exact path="/" render={props => this.renderContainer(props)} />
               </>
