@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { Container, Row, Spinner } from 'react-bootstrap'
 
-import './App.css'
+import '../styles/App.css'
 import Header from './Header'
 import Sidebar from './Sidebar'
 import QuestionForm from './QuestionForm'
