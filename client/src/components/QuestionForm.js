@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Col, Form, Button } from 'react-bootstrap'
 
 import Options from './Options'
+import '../styles/QuestionForm.css'
 
 class QuestionForm extends Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Redirect } from 'react-router-dom'
 import { Container, Row, Spinner } from 'react-bootstrap'
 
 import '../styles/App.css'
@@ -16,7 +16,8 @@ class App extends React.Component {
     this.state = {
       questions: null,
       loading: true,
-      message: null
+      message: null,
+      redirect: false
     }
   }
 
@@ -33,10 +34,21 @@ class App extends React.Component {
 
   handleDelete = (id) => 
     request(id, null, 'delete')
-      .then(data => this.getData('The question was deleted successfully.'))
+      .then(data => {
+        this.setState({
+          ...this.state,
+          redirect: true
+        })
+        this.getData('The question was deleted successfully.')
+      })
   
   handleCloseMessage = () => this.setState({ message: '' })
-  
+
+  componentDidUpdate() {
+    if (this.state.redirect) {
+      this.setState({ redirect: false })
+    }
+  }
 
   componentDidMount() {
     this.getData()
@@ -65,15 +77,16 @@ class App extends React.Component {
           currentQuestion={questions[props.match.params.id]}
           handleSubmit={this.handleSubmit}
           handleDelete={this.handleDelete}
-        />
+          />
       </>
     )
   }
 
   render() {
-    const { loading, message } = this.state
+    const { loading, message, redirect } = this.state
     return (
       <BrowserRouter>
+        {redirect && <Redirect to="/" /> }
         <Container>
           <Header />
           <Row>
