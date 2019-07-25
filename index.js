@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+const express = require('express')
+
 const app = require('./server/server')
 
 if (process.env.NODE_ENV === 'production') {
