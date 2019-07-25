@@ -15,7 +15,6 @@ class App extends React.Component {
     super(props)
     this.state = {
       questions: null,
-      currentQuestion: null,
       loading: true,
       message: null
     }
@@ -56,11 +55,11 @@ class App extends React.Component {
   }
 
   renderContainer(props) {
-    const { questions, currentQuestion } = this.state
+    const { questions } = this.state
 
     return (
       <>
-        <Sidebar {...props} questions={questions} currentQuestion={currentQuestion} />
+        <Sidebar {...props} questions={questions} currentQuestion={questions[props.match.params.id]} />
         <QuestionForm
           {...props}
           currentQuestion={questions[props.match.params.id]}

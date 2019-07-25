@@ -12,7 +12,7 @@ export default function Message(props) {
       style={{
         position: 'absolute',
         top: 0,
-        right: '20%',
+        right: '40%',
       }}
       autohide
     >

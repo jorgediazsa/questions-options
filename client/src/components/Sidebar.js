@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import { Col } from 'react-bootstrap'
 import { Link } from "react-router-dom"
 
+import '../styles/Sidebar.css'
+
 class Sidebar extends Component {
 
-  renderQuestions() {
-    const { questions, currentQuestion } = this.props
-    if (questions.length === 0) {
-      return <span>We got nothing here folks</span>
-    }
+  renderQuestions(questions, currentQuestion) {
+    
     return (
       questions.map(
         ({ _id, title }, index) => 
-          <li className={`question ${ currentQuestion === _id ? `selected` : `` }`} key={_id}>
-            <Link to={`/${index}`}>
+          <li className="question" key={_id}>
+            <Link to={`/${index}`} className={currentQuestion && currentQuestion._id === _id ? `selected` : `` }>
               {title}
             </Link>
           </li>
@@ -22,9 +21,11 @@ class Sidebar extends Component {
   }
 
   render() {
+    const { questions, currentQuestion } = this.props
     return (
-      <Col xs={3}>
-        <ul>{this.renderQuestions()}</ul>
+      <Col xs={3} className="sidebar">
+        {questions && <ul>{this.renderQuestions(questions, currentQuestion)}</ul>}
+        {!questions.length && <span className="nothing-here">We got nothing here folks</span>}        
       </Col>
     )
   }
